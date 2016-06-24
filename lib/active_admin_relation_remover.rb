@@ -1,0 +1,2 @@
+module ActiveAdminRelationRemover
+end
