@@ -9,11 +9,11 @@ ModelC.delete_all
 end
 
 9.times do
-  ModelA.create!
+  ModelA.create!(admin_user: AdminUser.first)
 end
 
 10.times do
-  ModelB.create!(model_a: ModelA.offset(rand(ModelA.count)).first)
+  ModelB.create!(admin_user: AdminUser.second, model_a: ModelA.offset(rand(ModelA.count)).first)
 end
 
 11.times do
