@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624134326) do
+ActiveRecord::Schema.define(version: 20160624212848) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -45,5 +45,42 @@ ActiveRecord::Schema.define(version: 20160624134326) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "model_as", force: :cascade do |t|
+    t.integer  "admin_user_id"
+    t.string   "column_a"
+    t.integer  "column_b"
+    t.boolean  "column_c"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "model_as", ["admin_user_id"], name: "index_model_as_on_admin_user_id"
+
+  create_table "model_bs", force: :cascade do |t|
+    t.integer  "admin_user_id"
+    t.integer  "model_a_id"
+    t.string   "column_a"
+    t.integer  "column_b"
+    t.boolean  "column_c"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "model_bs", ["admin_user_id"], name: "index_model_bs_on_admin_user_id"
+  add_index "model_bs", ["model_a_id"], name: "index_model_bs_on_model_a_id"
+
+  create_table "model_cs", force: :cascade do |t|
+    t.integer  "admin_user_id"
+    t.integer  "model_a_id"
+    t.string   "column_a"
+    t.integer  "column_b"
+    t.boolean  "column_c"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "model_cs", ["admin_user_id"], name: "index_model_cs_on_admin_user_id"
+  add_index "model_cs", ["model_a_id"], name: "index_model_cs_on_model_a_id"
 
 end
