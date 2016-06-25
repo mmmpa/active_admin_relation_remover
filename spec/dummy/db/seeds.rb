@@ -1,3 +1,12 @@
+if ENV['BIG_DATA_E']
+  2000.times do
+    ModelE.create!(model_d: ModelD.create!)
+  end
+
+  raise 'end'
+end
+
+
 AdminUser.delete_all
 ModelA.delete_all
 ModelB.delete_all

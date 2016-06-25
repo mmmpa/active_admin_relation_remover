@@ -94,7 +94,7 @@ module ActiveAdminRelationRemover
     end
 
     def attributes
-      @attributes ||= @klass.attribute_names.dup.tap { |names|
+      @attributes ||= @klass.columns.map(&:name).tap { |names|
         names.delete(@klass.primary_key)
       }
     end

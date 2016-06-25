@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rb-readline"
   spec.add_development_dependency "activeadmin", '1.0.0.pre1'
   spec.add_development_dependency "devise"
+  spec.add_development_dependency "rack-mini-profiler"
 end
