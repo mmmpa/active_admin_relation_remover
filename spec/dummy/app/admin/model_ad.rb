@@ -1,5 +1,5 @@
-ActiveAdmin.register ModelB do
+ActiveAdmin.register ModelAd do
   ActiveAdminRelationRemover.prepare(self){
-    filter!
+    permit!
   }
 end

@@ -3,19 +3,27 @@ ModelA.delete_all
 ModelB.delete_all
 ModelC.delete_all
 
-8.times do |n|
+def d2(n)
+  (n % 2) + 1
+end
+
+2.times do |n|
   password = n.to_s * 8
   AdminUser.create!(email: "#{password}@ex.com", password: password, password_confirmation: password)
 end
 
-9.times do
+3.times do
   ModelA.create!(admin_user: AdminUser.first)
 end
 
-10.times do
-  ModelB.create!(admin_user: AdminUser.second, model_a: ModelA.offset(rand(ModelA.count)).first)
+4.times do |n|
+  ModelB.create!(admin_user: AdminUser.second, model_a: ModelA.find(d2(n)))
 end
 
-11.times do
-  ModelC.create!(model_a: ModelA.offset(rand(ModelA.count)).first)
+5.times do |n|
+  ModelC.create!(model_a: ModelA.find(d2(n)))
+end
+
+6.times do |n|
+  ModelAd.create!(model_a: ModelA.find(d2(n)), model_d: ModelD.create!)
 end

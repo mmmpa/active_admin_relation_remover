@@ -1,6 +1,6 @@
-ActiveAdmin.register ModelA do
+ActiveAdmin.register ModelD do
   preserve_default_filters!
-  ModelA.reflections.each_pair do |name, config|
+  ModelD.reflections.each_pair do |name, config|
     remove_filter name
     if config.macro == :belongs_to
       filter config.foreign_key, label: config.foreign_key
@@ -14,13 +14,13 @@ ActiveAdmin.register ModelA do
     end
   end
 
-  editable_names = ModelA.reflections.map { |name, config| name if config.macro == :belongs_to }.compact
+  editable_names = ModelD.reflections.map { |name, config| name if config.macro == :belongs_to }.compact
 
-  attributes = ModelA.attribute_names.dup.tap { |names|
-    names.delete(ModelA.primary_key)
+  attributes = ModelD.attribute_names.dup.tap { |names|
+    names.delete(ModelD.primary_key)
   }.map do |name|
     if editable_names.include?(name)
-      ModelA.reflections[name].foreign_key
+      ModelD.reflections[name].foreign_key
     else
       name
     end
